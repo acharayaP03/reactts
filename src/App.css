@@ -55,6 +55,18 @@ button{
   float: right;
 }
 
+.mt-5{
+  margin-top: 24px;
+}
+
+.find-guest{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
