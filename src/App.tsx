@@ -26,7 +26,9 @@ function App() {
 
   return (
     <div className="App">
-        <Greeter message="Explore React with Typescript"/>
+        <Greeter message="Explore React with Typescript" onClick={() => console.log('clicked header')}>
+            <span>Another child component returen by React.FC</span>
+        </Greeter>
         <AddShoppingListItem addToShoppingList={addToShoppingList}/>
         <ShoppingList heading="My awesome shopping list" items={shoppingItems}/>
     </div>
