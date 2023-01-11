@@ -13,7 +13,6 @@ export default function AddShoppingListItem(props: AddShoppingListItemProps): JS
     const handleAddItem = (e: React.FormEvent) =>{
         e.preventDefault();
 
-        console.log('Event submitted.....',  inputRef.current!.value)
         let newProduct = inputRef.current!.value;
         const productQuantity = productQuantityRef.current!.value
         props.addToShoppingList(newProduct, +productQuantity)
