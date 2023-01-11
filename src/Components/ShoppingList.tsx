@@ -4,13 +4,24 @@ import {ShoppingLists} from "../models/shoppingList";
 
 /**
  * Annotate Component with React.FC type that accepts Generic type.
+ * one important benefit of annotating component as React.FC is that it can return any children defined inside it
+ * example of it is in app.tsx where we defined Greeter component as opening and closing tag and it returns a children
+ *
  */
 
 interface GreeterProps {
-    message: string
+    message: string;
+    color?: string;
+    onClick: () => void;
+    children?: React.ReactNode;
 }
-export const Greeter: React.FC<GreeterProps>  = ({message}: GreeterProps)=> {
-    return <h1>{message}</h1>
+
+export const Greeter: React.FC<GreeterProps>  = ({message, onClick, color, children}: GreeterProps)=> {
+    return (<div>
+        <h1 onClick={onClick}>{message}</h1>
+        {/*This will render the children component */}
+        { children }
+    </div>)
 }
 
 /**
