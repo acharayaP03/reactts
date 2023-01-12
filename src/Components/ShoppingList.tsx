@@ -47,15 +47,20 @@ export const ShoppingList = ({heading, items}: ShoppingLists): JSX.Element =>{
                 }
             </ul>
             <AnotherJSXComponent message="This is message">
-                <span>Another children with JSX.Element</span>
+                <span>Children being dragged....</span>
             </AnotherJSXComponent>
         </div>
     )
 }
 
 export const AnotherJSXComponent = (props: GreeterProps): JSX.Element =>{
+
+    const onDragStart = (e:  React.DragEventHandler<HTMLDivElement>) =>{
+        console.log(e)
+    }
     return (
-        <div>
+    // @ts-ignore
+        <div draggable onDragStart={onDragStart}>
             {props.message}
             {props.children}
         </div>
