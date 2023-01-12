@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, {useEffect, useRef} from "react";
 
 
 interface AddShoppingListItemProps {
@@ -11,6 +11,16 @@ export default function AddShoppingListItem(props: AddShoppingListItemProps): JS
      */
     const inputRef = useRef<HTMLInputElement>(null)
     const productQuantityRef = useRef<HTMLInputElement>(null)
+
+    /**
+     * this hook will run as soon as the compnent is finished loading. and wil put the focus on input element
+     */
+    useEffect(() =>{
+        if(!inputRef.current){
+            return
+        }
+        inputRef.current.focus()
+    }, [])
 
     /**
      *
