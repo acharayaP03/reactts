@@ -5,6 +5,7 @@ import {ShoppingListItems} from "./models/shoppingList";
 import AddShoppingListItem from "./Components/AddShoppingListItem";
 import {v4 as generateRandomId } from "uuid";
 import FindGuest from "./Components/FindGuest";
+import UserSearchClass from "./Components/UserSearchClass";
 
 /**
  * @App is a function parent component, where it contains couple of child component
@@ -16,6 +17,16 @@ import FindGuest from "./Components/FindGuest";
  * Type annotation is located under ./models dir.
  *
  */
+
+interface UsersList {
+    name: string;
+    age: number
+}
+const usersList: UsersList[] = [
+    { name: "Trishten", age: 40},
+    { name: "Lily", age: 40},
+    { name: "Pratish", age: 40}
+]
 
 function App() {
     /**
@@ -36,6 +47,7 @@ function App() {
         <AddShoppingListItem addToShoppingList={addToShoppingList}/>
         <ShoppingList heading="My awesome shopping list" items={shoppingItems}/>
         <FindGuest />
+        <UserSearchClass users={usersList}/>
     </div>
   );
 }
