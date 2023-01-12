@@ -6,10 +6,17 @@ interface AddShoppingListItemProps {
 }
 
 export default function AddShoppingListItem(props: AddShoppingListItemProps): JSX.Element {
+    /**
+     *
+     */
     const inputRef = useRef<HTMLInputElement>(null)
     const productQuantityRef = useRef<HTMLInputElement>(null)
 
-
+    /**
+     *
+     * @param e has been annotated to React.FormEvent
+     * another example of non inline event in the function.
+     */
     const handleAddItem = (e: React.FormEvent) =>{
         e.preventDefault();
 
