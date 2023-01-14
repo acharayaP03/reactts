@@ -9,7 +9,21 @@ interface RepositoriesState {
 }
 
 
-const reducer = (state: RepositoriesState, action: any) =>{
+interface Action {
+    type: string,
+    payload?: any;
+}
+
+
+/**
+ *
+ * @param state annotated as RepositoriesState.
+ * @param action
+ *
+ * this reducer must return RepositoriesState, so that typeScript can properly infer type.
+ */
+
+const reducer = (state: RepositoriesState, action: Action): RepositoriesState =>{
     switch (action.type){
         /**
          * this is where user will start searching first.
