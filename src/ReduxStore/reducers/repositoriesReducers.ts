@@ -8,12 +8,6 @@ interface RepositoriesState {
     data: string[]
 }
 
-
-// interface Action {
-//     type: string,
-//     payload?: any;
-// }
-
 interface SearchRepositoriesAction {
     type: 'search_repositories'
 }
@@ -28,6 +22,13 @@ interface SearchRepositoriesErrorAction {
     payload: string
 }
 
+type Action = SearchRepositoriesAction | SearchRepositoriesSuccessAction | SearchRepositoriesErrorAction
+
+enum ActionType {
+    SEARCH_REPOSITORIES = 'search_repositories',
+    SEARCH_REPOSITORIES_SUCCESS = 'search_repositories_success',
+    SEARCH_REPOSITORIES_ERROR = 'search_repositories_error'
+}
 
 /**
  *
@@ -38,18 +39,18 @@ interface SearchRepositoriesErrorAction {
  * actions always returns an object.
  */
 
-const reducer = (state: RepositoriesState, action: SearchRepositoriesAction | SearchRepositoriesSuccessAction | SearchRepositoriesErrorAction): RepositoriesState =>{
+const reducer = (state: RepositoriesState, action: Action): RepositoriesState =>{
     switch (action.type){
         /**
          * this is where user will start searching first.
          * this will be called as soon as the user clicks on search button
          * which means we will clear every thing from previous results therefore data will be [], and error will be null
          */
-        case 'search_repositories':
+        case ActionType.SEARCH_REPOSITORIES:
             return { loading: true, error: null, data: [] }
-        case 'search_repositories_success':
+        case ActionType.SEARCH_REPOSITORIES_SUCCESS:
             return { loading: false, error: null, data: action.payload}
-        case 'search_repositories_error':
+        case ActionType.SEARCH_REPOSITORIES_ERROR:
             return { loading: false, error: action.payload, data: []}
         default:
             return state;
