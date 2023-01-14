@@ -7,6 +7,16 @@ import {v4 as generateRandomId } from "uuid";
 import FindGuest from "./Components/FindGuest";
 import UserSearchClass from "./Components/UserSearchClass";
 
+import RepositoriesList from "./Components/RepositoriesList";
+
+
+/**
+ * import all redux stuff here
+ */
+
+import { Provider } from "react-redux";
+import { store } from "./ReduxStore";
+
 /**
  * @App is a function parent component, where it contains couple of child component
  * @ShoppingList
@@ -40,15 +50,19 @@ function App() {
     }
 
   return (
-    <div className="App">
-        <Greeter message="Explore React with Typescript" onClick={() => console.log('clicked header')}>
-            <span>Another child component returen by React.FC</span>
-        </Greeter>
-        <AddShoppingListItem addToShoppingList={addToShoppingList}/>
-        <ShoppingList heading="My awesome shopping list" items={shoppingItems}/>
-        <FindGuest />
-        <UserSearchClass users={usersList}/>
-    </div>
+      <Provider store={store}>
+        <div className="App">
+            {/*<Greeter message="Explore React with Typescript" onClick={() => console.log('clicked header')}>*/}
+            {/*    <span>Another child component returen by React.FC</span>*/}
+            {/*</Greeter>*/}
+            {/*<AddShoppingListItem addToShoppingList={addToShoppingList}/>*/}
+            {/*<ShoppingList heading="My awesome shopping list" items={shoppingItems}/>*/}
+            {/*<FindGuest />*/}
+            {/*<UserSearchClass users={usersList}/>*/}
+
+            <RepositoriesList/>
+        </div>
+      </Provider>
   );
 }
 

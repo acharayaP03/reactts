@@ -20,7 +20,13 @@ interface RepositoriesState {
  * actions always returns an object.
  */
 
-const reducer = (state: RepositoriesState, action: Action): RepositoriesState =>{
+const initialState = {
+    loading: false,
+    error: null,
+    data: []
+}
+
+const repositoriesReducers = (state: RepositoriesState = initialState, action: Action): RepositoriesState =>{
     switch (action.type){
         /**
          * this is where user will start searching first.
@@ -39,4 +45,4 @@ const reducer = (state: RepositoriesState, action: Action): RepositoriesState =>
 }
 
 
-export default reducer;
+export default repositoriesReducers;
