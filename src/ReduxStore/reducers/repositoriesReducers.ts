@@ -9,9 +9,23 @@ interface RepositoriesState {
 }
 
 
-interface Action {
-    type: string,
-    payload?: any;
+// interface Action {
+//     type: string,
+//     payload?: any;
+// }
+
+interface SearchRepositoriesAction {
+    type: 'search_repositories'
+}
+
+interface SearchRepositoriesSuccessAction {
+    type: 'search_repositories_success'
+    payload: string[]
+}
+
+interface SearchRepositoriesErrorAction {
+    type: 'search_repositories_error';
+    payload: string
 }
 
 
@@ -21,9 +35,10 @@ interface Action {
  * @param action
  *
  * this reducer must return RepositoriesState, so that typeScript can properly infer type.
+ * actions always returns an object.
  */
 
-const reducer = (state: RepositoriesState, action: Action): RepositoriesState =>{
+const reducer = (state: RepositoriesState, action: SearchRepositoriesAction | SearchRepositoriesSuccessAction | SearchRepositoriesErrorAction): RepositoriesState =>{
     switch (action.type){
         /**
          * this is where user will start searching first.
